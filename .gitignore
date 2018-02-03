@@ -1,0 +1,6 @@
+local/faces/*.jpg
+local/feature/*.pkl
+runtime/faces/*.jpg
+runtime/feature/*.pkl
+pretrain/*.prototxt
+pretrain/*.caffemodel

@@ -18,7 +18,7 @@ Converted from <https://github.com/dannyblueliu/YOLO-version-2-Face-detection>
 
 <http://www.abars.biz/keras/face.caffemodel>
 
-Download face.prototxt and face.caffemodel.
+Download face.prototxt and face.caffemodel and put in the pretrain folder.
 
 # Demo
 
