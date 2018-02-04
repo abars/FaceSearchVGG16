@@ -209,6 +209,7 @@ def main(argv):
 	DEMO_IMG=""
 	MODE="search"
 
+	# Parse command
 	if len(sys.argv) >= 2:
 		MODE = sys.argv[1]
 		if len(sys.argv) >= 3:
@@ -217,10 +218,20 @@ def main(argv):
 		print("usage: python face_search.py [capture/search]")
 		sys.exit(1)
 
-	model_filename = './pretrain/face.prototxt'
-	weight_filename = './pretrain/face.caffemodel'
+	if MODE!="search" and MODE!="capture":
+		print("command not found")
+		sys.exit(1)
 
-	net = caffe.Net(model_filename, weight_filename, caffe.TEST)
+	# Create folder
+	if MODE=="capture":
+		if not os.path.exists("local/faces"):
+			os.mkdir("local/faces")
+		if not os.path.exists("local/feature"):
+			os.mkdir("local/feature")
+		if not os.path.exists("runtime/faces"):
+			os.mkdir("runtime/faces")
+		if not os.path.exists("runtime/feature"):
+			os.mkdir("runtime/feature")
 
 	# Read image features
 	features = []
@@ -231,6 +242,11 @@ def main(argv):
 	for feature_path in glob.glob("runtime/feature/*"):
 	    features.append(pickle.load(open(feature_path, 'rb')))
 	    img_paths.append('runtime/faces/' + os.path.splitext(os.path.basename(feature_path))[0] + '.jpg')
+
+	# Read yolo
+	model_filename = './pretrain/face.prototxt'
+	weight_filename = './pretrain/face.caffemodel'
+	net = caffe.Net(model_filename, weight_filename, caffe.TEST)
 
 	# Read models
 	base_model = VGG16(weights='imagenet')
