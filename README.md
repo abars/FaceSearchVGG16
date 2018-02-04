@@ -2,6 +2,9 @@
 
 Implement Face Search using VGG16 feature value
 
+<img src="https://github.com/abars/FaceSearchVGG16/blob/master/images/demo.png" width="50%" height="50%">
+(image from adience_benchmark)
+
 # Requirement
 
 Keras
@@ -34,7 +37,7 @@ Here is a run face seach.
 
 Here is a run face seach from file.
 
-`python face_search.py search input.jpg`
+`python face_search.py search local/faces/landmark_aligned_face.2281.9426695459_9e8b347604_o.jpg`
 
 #  Dataset
 
@@ -59,4 +62,12 @@ Here is a create local/faces.
 Here is a extract feature value from local/faces to local/feature.
 
 `python feature_extract.py`
+
+# Related Work
+
+<https://github.com/blan4/KawaiiSearch>
+
+<https://github.com/matsui528/sis>
+
+
 

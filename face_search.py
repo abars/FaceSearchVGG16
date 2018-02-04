@@ -144,15 +144,15 @@ def show_results(MODE,img,results, img_width, img_height, keras_model, features,
 		IMAGE_SIZE_KERAS=224
 
 		img_keras = cv2.resize(face_image, (IMAGE_SIZE_KERAS,IMAGE_SIZE_KERAS))
-		img_keras = img_keras[::-1, :, ::-1].copy()	#BGR to RGB
-		img_keras = np.expand_dims(img_keras, axis=0)
-		img_keras = img_keras - 128
+		img_keras = img_keras[...,::-1]  #BGR 2 RGB
+		img_keras = np.array(img_keras, dtype=np.float32)
+		img_keras.shape = (1,) + img_keras.shape
+		img_keras -= 128
+		feature = keras_model.predict(img_keras)[0]
+		feature = feature / np.linalg.norm(feature)  # Normalize
 
 		cv2.rectangle(target_image, (x2,y2), (x2+w2,y2+h2), color=(0,0,255), thickness=3)
 		offset=16
-
-		pred = keras_model.predict(img_keras)[0]
-		feature = pred / np.linalg.norm(pred)  # Normalize
 
 		query = feature
 		dists = np.linalg.norm(features - query, axis=1)  # Do search

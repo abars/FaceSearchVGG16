@@ -21,8 +21,6 @@ base_model = VGG16(weights='imagenet')
 keras_model = Model(inputs=base_model.input, outputs=base_model.get_layer('fc1').output)
 keras_model.summary()
 
-exit
-
 for file in files:
 	print file
 

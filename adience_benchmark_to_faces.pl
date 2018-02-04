@@ -7,6 +7,7 @@ use Image::Size;
 use File::Copy;
 
 my $dataset_path="dataset/";
+#my $dataset_path="../yolo-keras-face-detection/dataset/agegender/";
 
 my $ANNOTATION_FILES="./$dataset_path"."fold_";
 my $FACE_FILES="./$dataset_path"."aligned";
