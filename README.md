@@ -7,9 +7,13 @@ Implement Face Search using VGG16 feature value
 
 # Requirement
 
-Keras
+Keras + TensorFlow (Feature Extract)
 
-Caffe
+Caffe (Face Detection)
+
+Python 2.7 (Backend)
+
+Perl (Create Dataset)
 
 # Preparation
 
